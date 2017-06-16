@@ -6,7 +6,7 @@ from math import sqrt
 style.use('ggplot')
 plt.ion()
 
-iteration = 15
+iteration = 20
 jump = 2
 
 for i in range(iteration):
@@ -16,7 +16,7 @@ for i in range(iteration):
     function2 = '-(4 - x2**2)**(1/2)'
 
     x1 = np.arange(-2, (2+jump), jump)
-    x2 = -x1
+    x2 = np.arange((2-jump), (-2-jump), -jump)
 
     y1 = eval(function1)
     y2 = eval(function2)
@@ -25,8 +25,9 @@ for i in range(iteration):
     y = np.append(y1, y2)
 
     circum = np.array([sqrt((x[i+1]-x[i])**2 + (y[i+1]-y[i])**2) for i in \
-                       range(int(8/jump)-1)])
+                       range(int(4/jump))])
     circum = np.nansum(circum)
+    circum *= 2
 
     pi = circum/4
 
@@ -35,8 +36,8 @@ for i in range(iteration):
     plt.xlabel('x-axis')
     plt.ylabel('y-axis')
     
-    plt.text(2, 2, str(pi))
-    plt.text(-2, 2, str(i+1))
+    plt.text(2, 2, ('pi='+str(pi)))
+    plt.text(-2, 2, ('loop '+str(i+1)))
     plt.text(-2, -2, 'n='+str(2**(i+2)))
     
     plt.axis('equal')
