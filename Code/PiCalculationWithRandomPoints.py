@@ -57,7 +57,7 @@ for i in range(loopRange):
 
     plt.axis('equal')
     plt.scatter(xRandom, yRandom, color=colourPoint)
-    plt.show()
+    plt.draw()
     plt.pause(0.00001)
 
 
